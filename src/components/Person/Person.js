@@ -16,7 +16,7 @@ class Person extends Component {
   render() {
     return (
       <div className="Person">
-        <form>
+        <form onSubmit={this.handleOnSubmit}>
           <div>
             <p>
               <strong>First Name:</strong>
@@ -26,6 +26,7 @@ class Person extends Component {
                 name="firstName"
                 type="text"
                 value={this.state.firstName}
+                onChange={this.handleOnChange}
               />
             </p>
           </div>
@@ -34,7 +35,12 @@ class Person extends Component {
               <strong>Last Name:</strong>
             </p>
             <p>
-              <input name="lastName" type="text" value={this.state.lastName} />
+              <input
+                name="lastName"
+                type="text"
+                value={this.state.lastName}
+                onChange={this.handleOnChange}
+              />
             </p>
           </div>
           <div>
@@ -42,7 +48,12 @@ class Person extends Component {
               <strong>Email:</strong>
             </p>
             <p>
-              <input name="email" type="email" value={this.state.email} />
+              <input
+                name="email"
+                type="email"
+                value={this.state.email}
+                onChange={this.handleOnChange}
+              />
             </p>
           </div>
           <div>
@@ -50,7 +61,12 @@ class Person extends Component {
               <strong>Phone:</strong>
             </p>
             <p>
-              <input name="phone" type="tel" value={this.state.phone} />
+              <input
+                name="phone"
+                type="tel"
+                value={this.state.phone}
+                onChange={this.handleOnChange}
+              />
             </p>
           </div>
           <p>
@@ -60,6 +76,28 @@ class Person extends Component {
       </div>
     );
   }
+
+  handleOnChange = e => {
+    const {
+      target: { value, name }
+    } = e;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  handleOnSubmit = e => {
+    e.preventDefault();
+    const { firstName, lastName, email, phone } = this.state;
+    const data = {
+      firstName,
+      lastName,
+      email,
+      phone
+    };
+
+    console.log("Data:", data);
+  };
 }
 
 export default Person;
