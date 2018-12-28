@@ -22,7 +22,11 @@ class Person extends Component {
               <strong>First Name:</strong>
             </p>
             <p>
-              <input name="firstName" type="text" />
+              <input
+                name="firstName"
+                type="text"
+                value={this.state.firstName}
+              />
             </p>
           </div>
           <div>
@@ -30,7 +34,7 @@ class Person extends Component {
               <strong>Last Name:</strong>
             </p>
             <p>
-              <input name="lastName" type="text" />
+              <input name="lastName" type="text" value={this.state.lastName} />
             </p>
           </div>
           <div>
@@ -38,7 +42,7 @@ class Person extends Component {
               <strong>Email:</strong>
             </p>
             <p>
-              <input name="email" type="email" />
+              <input name="email" type="email" value={this.state.email} />
             </p>
           </div>
           <div>
@@ -46,7 +50,7 @@ class Person extends Component {
               <strong>Phone:</strong>
             </p>
             <p>
-              <input name="phone" type="tel" />
+              <input name="phone" type="tel" value={this.state.phone} />
             </p>
           </div>
           <p>
