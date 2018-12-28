@@ -9,7 +9,11 @@ class Person extends Component {
       firstName: "",
       lastName: "",
       email: "",
-      phone: ""
+      phone: "",
+      errors: {
+        firstName: false,
+        lastName: false
+      }
     };
   }
 
@@ -27,7 +31,11 @@ class Person extends Component {
                 type="text"
                 value={this.state.firstName}
                 onChange={this.handleOnChange}
+                className={this.state.errors.firstName ? "error" : ""}
               />
+              {this.state.errors.firstName && (
+                <div className="errorMessage">Required field</div>
+              )}
             </p>
           </div>
           <div>
@@ -40,7 +48,11 @@ class Person extends Component {
                 type="text"
                 value={this.state.lastName}
                 onChange={this.handleOnChange}
+                className={this.state.errors.lastName ? "error" : ""}
               />
+              {this.state.errors.lastName && (
+                <div className="errorMessage">Required field</div>
+              )}
             </p>
           </div>
           <div>
@@ -88,7 +100,16 @@ class Person extends Component {
 
   handleOnSubmit = e => {
     e.preventDefault();
+
     const { firstName, lastName, email, phone } = this.state;
+
+    this.setState({
+      errors: {
+        firstName: firstName === "",
+        lastName: lastName === ""
+      }
+    });
+
     const data = {
       firstName,
       lastName,
