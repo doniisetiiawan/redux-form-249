@@ -13,6 +13,20 @@ class TodoForm extends Component {
     addTask(values);
   };
 
+  renderError = (field) => {
+    const { meta: { submitFailed, error } } = field;
+
+    if (submitFailed && error) {
+      return (
+        <div className="error">
+          {error}
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   render() {
     const { handleSubmit } = this.props;
 
@@ -20,15 +34,24 @@ class TodoForm extends Component {
 
     return (
       <form onSubmit={handleSubmit(this.onSubmit)}>
-        <Field
-          name="task"
-          component={this.renderInput}
-        />
+        <Field name="task" component={this.renderInput} />
+        <Field name="task" component={this.renderError} />
       </form>
     );
   }
 }
 
+const validate = (values) => {
+  const errors = {};
+
+  if (!values.task) {
+    errors.task = 'Task cannot be empty!';
+  }
+
+  return errors;
+};
+
 export default reduxForm({
+  validate,
   form: 'todo',
 })(TodoForm);
