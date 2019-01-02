@@ -10,6 +10,7 @@
     "react/jsx-one-expression-per-line": "off",
     "react/destructuring-assignment": "off",
     "no-console": "off",
-    "react/no-array-index-key": "off"
+    "react/no-array-index-key": "off",
+    "no-undef": "off"
   }
 }
