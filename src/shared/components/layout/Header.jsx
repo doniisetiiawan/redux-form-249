@@ -18,6 +18,7 @@ const Header = (props) => {
         <li><Link to="/about">About</Link></li>
         <li><Link to="/coins">Coins</Link></li>
         <li><Link to="/notes">Notes</Link></li>
+        <li><Link to="/todo">Todo</Link></li>
         <li><Link to="/contact">Contact</Link></li>
       </ul>
     </header>
